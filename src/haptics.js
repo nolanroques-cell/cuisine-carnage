@@ -28,40 +28,29 @@
 // Engine, so it does nothing when the game is opened in a plain browser.
 
 export const HAPTICS = {
-  // A single short tick — the smallest thing worth feeling.
-  tick: {
-    events: [
-      { type: 'transient', time: 0, intensity: 0.5, sharpness: 0.8 }
-    ]
-  },
+  tick: { events: [{ intensity: 0.5, sharpness: 0.8, time: 0, type: 'transient' }] },
 
-  // A crack followed by a fading rumble. A tap alone reads as a click; the tail
-  // is what makes it read as an impact.
-  impact: {
-    events: [
-      { type: 'transient', time: 0, intensity: 1, sharpness: 0.9 },
-      { type: 'continuous', time: 0.02, duration: 0.28, intensity: 0.55, sharpness: 0.2 }
-    ]
-  },
+  impact: { events: [{ intensity: 1, sharpness: 0.9, time: 0, type: 'transient' }, { duration: 0.28, intensity: 0.55, sharpness: 0.2, time: 0.02, type: 'continuous' }] },
 
-  // A curve ramps a value smoothly across an event, which stepped segments
-  // cannot do. This one swells and falls away.
-  charge: {
-    events: [
-      { type: 'continuous', time: 0, duration: 0.8, intensity: 0.4, sharpness: 0.3 }
-    ],
-    curves: [
-      {
-        parameter: 'intensity',
-        time: 0,
-        points: [
-          { time: 0, value: 0.1 },
-          { time: 0.6, value: 1 },
-          { time: 0.8, value: 0 }
-        ]
-      }
-    ]
-  }
+  charge: { curves: [{ parameter: 'intensity', points: [{ time: 0, value: 0.1 }, { time: 0.6, value: 1 }, { time: 0.8, value: 0 }], time: 0 }], events: [{ duration: 0.8, intensity: 0.4, sharpness: 0.3, time: 0, type: 'continuous' }] },
+
+  coin: { events: [{ intensity: 0.5, sharpness: 0.85, time: 0, type: 'transient' }, { intensity: 0.7, sharpness: 1, time: 0.07, type: 'transient' }] },
+
+  chop: { events: [{ decayTime: 0.08, intensity: 1, sharpness: 0.3, time: 0, type: 'transient' }, { duration: 0.18, intensity: 0.4, releaseTime: 0.15, sharpness: 0.15, time: 0.03, type: 'continuous' }] },
+
+  splat: { events: [{ attackTime: 0.01, duration: 0.16, intensity: 0.65, releaseTime: 0.1, sharpness: 0.1, time: 0, type: 'continuous' }] },
+
+  'serve-good': { events: [{ intensity: 0.5, sharpness: 0.7, time: 0, type: 'transient' }, { intensity: 0.75, sharpness: 0.85, time: 0.1, type: 'transient' }, { intensity: 1, sharpness: 0.95, time: 0.2, type: 'transient' }] },
+
+  'serve-bad': { events: [{ attackTime: 0.005, duration: 0.22, intensity: 0.5, releaseTime: 0.12, sharpness: 0.1, time: 0, type: 'continuous' }] },
+
+  unlock: { events: [{ intensity: 0.5, sharpness: 0.8, time: 0, type: 'transient' }, { intensity: 0.7, sharpness: 0.85, time: 0.08, type: 'transient' }, { intensity: 0.9, sharpness: 0.9, time: 0.16, type: 'transient' }] },
+
+  cook: { curves: [{ parameter: 'intensity', points: [{ time: 0, value: 0.1 }, { time: 0.4, value: 0.35 }], time: 0 }], events: [{ duration: 0.4, intensity: 0.2, sharpness: 0.3, time: 0, type: 'continuous' }] },
+
+  'cook-done': { events: [{ intensity: 0.4, sharpness: 0.9, time: 0, type: 'transient' }, { intensity: 0.7, sharpness: 1, time: 0.05, type: 'transient' }] },
+
+  gameover: { curves: [{ parameter: 'intensity', points: [{ time: 0, value: 0.6 }, { time: 0.7, value: 0 }], time: 0 }], events: [{ duration: 0.7, intensity: 0.6, releaseTime: 0.2, sharpness: 0.2, time: 0, type: 'continuous' }] }
 };
 
 const channel =

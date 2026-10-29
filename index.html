@@ -1,6 +1,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <title>Cuisine Carnage</title>
+<link rel="icon" href="assets/icon.png">
+<!-- Rend le jeu installable sur l'écran d'accueil (iOS + Android). -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Cuisine Carnage">
+<meta name="theme-color" content="#1c1410">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icon.png">
 <link rel="stylesheet" href="styles/main.css">
 
 <div id="stage"></div>
@@ -10,3 +18,10 @@
      can rely on `Phaser` already existing without importing anything. -->
 <script src="vendor/phaser.min.js"></script>
 <script type="module" src="src/main.js"></script>
+<script>
+  // Enregistre le service worker sile contexte le permet ; ne doit jamais
+  // empêcher le jeu de tourner dans le cas contraire.
+  if ('serviceWorker' in navigator && location.protocol === 'https:') {
+    navigator.serviceWorker.register('./sw.js').catch(function () {});
+  }
+</script>

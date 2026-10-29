@@ -1,0 +1,17 @@
+{
+  "name": "Cuisine Carnage",
+  "short_name": "Carnage",
+  "description": "Sers les clients… ou régale-toi autrement.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#1c1410",
+  "theme_color": "#1c1410",
+  "icons": [
+    {
+      "src": "assets/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

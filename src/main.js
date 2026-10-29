@@ -2,13 +2,14 @@
 // in scenes under src/scenes/.
 
 import { BootScene } from './scenes/BootScene.js';
-import { themeValue } from './theme.js';
+import { GameScene } from './scenes/GameScene.js';
 
 // On window so the running game can be inspected from outside the module graph.
 window.game = new Phaser.Game({
   type: Phaser.AUTO,
   parent: 'stage',
-  backgroundColor: themeValue('--bg'),
+  // The game owns its warm kitchen palette; it does not follow the system theme.
+  backgroundColor: '#1c1410',
 
   scale: {
     // The runtime is a phone-shaped panel that can change size, so the game
@@ -35,5 +36,5 @@ window.game = new Phaser.Game({
     activePointers: 3
   },
 
-  scene: [BootScene]
+  scene: [BootScene, GameScene]
 });
